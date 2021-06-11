@@ -1,0 +1,43 @@
+{
+  application: "dinghy-pipeline-conversion",
+  pipelines: [
+    {
+      "application": "dinghy-pipeline-conversion",
+      "name": "dinghyfile controlled pipeline",
+      "keepWaitingPipelines": false,
+      "lastModifiedBy": "anonymous",
+      "limitConcurrent": true,
+      "spelEvaluator": "v4",
+      "stages": [
+        {
+          "name": "Wait",
+          "refId": "1",
+          "requisiteStageRefIds": [],
+          "type": "wait",
+          "waitTime": 30
+        },
+        {
+          "failPipeline": true,
+          "judgmentInputs": [],
+          "name": "Manual Judgment",
+          "notifications": [],
+          "refId": "2",
+          "requisiteStageRefIds": [
+            "1"
+          ],
+          "type": "manualJudgment"
+        },
+        {
+          "name": "Wait",
+          "refId": "3",
+          "requisiteStageRefIds": [
+            "2"
+          ],
+          "type": "wait",
+          "waitTime": 45
+        }
+      ],
+      "triggers": []
+    }
+  ]
+}
